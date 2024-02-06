@@ -1,0 +1,18 @@
+import UIKit
+
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+    var initializeCoordinator: InitializeCoordinator?
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let navigationController = UINavigationController()
+        initializeCoordinator = InitializeCoordinator(navigationController: navigationController)
+        initializeCoordinator?.start()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        return true
+    }
+}
