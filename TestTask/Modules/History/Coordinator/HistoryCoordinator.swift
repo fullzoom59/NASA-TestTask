@@ -1,16 +1,16 @@
 import UIKit
 
 class HistoryCoordinator: Coordinator {
-    var navigationController: UINavigationController
+    weak var navigationController: UINavigationController?
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
     
     func start() {
         let vc = HistoryViewController()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func setHomeViewController(shortDate: String, longDate: String, roverType: String, cameraType: String) {

@@ -1,11 +1,11 @@
 import UIKit
 
 class FilterCoordinator: Coordinator {
-    var navigationController: UINavigationController
+    var navigationController: UINavigationController?
     weak var homeViewController: HomeViewController?
     var model: FilterParameters
     
-    init(navigationController: UINavigationController, homeViewController: HomeViewController, model: FilterParameters) {
+    init(navigationController: UINavigationController?, homeViewController: HomeViewController, model: FilterParameters) {
         self.navigationController = navigationController
         self.homeViewController = homeViewController
         self.model = model
@@ -22,6 +22,6 @@ class FilterCoordinator: Coordinator {
         vc.delegate = homeViewController
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = homeViewController
-        navigationController.present(vc, animated: true)
+        navigationController?.present(vc, animated: true)
     }
 }

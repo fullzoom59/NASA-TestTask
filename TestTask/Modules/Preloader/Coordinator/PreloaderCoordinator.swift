@@ -2,12 +2,12 @@ import UIKit
 import OrderedCollections
 
 protocol Coordinator {
-    var navigationController: UINavigationController { get set }
+    var navigationController: UINavigationController? { get set }
     func start()
 }
 
 class InitializeCoordinator: Coordinator {
-    var navigationController: UINavigationController
+    weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -26,16 +26,16 @@ class InitializeCoordinator: Coordinator {
 }
 
 class PreloaderCoordinator: Coordinator {
-    var navigationController: UINavigationController
+    var navigationController: UINavigationController?
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
     
     func start() {
         let vc = PreloaderViewController()
         vc.coordinator = self
-        navigationController.setViewControllers([vc], animated: false)
+        navigationController?.setViewControllers([vc], animated: false)
     }
     
     func finish() {

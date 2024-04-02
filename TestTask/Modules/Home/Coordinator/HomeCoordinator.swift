@@ -1,10 +1,10 @@
 import UIKit
 
 class HomeCoordinator: Coordinator {
-    var navigationController: UINavigationController
+    var navigationController: UINavigationController?
     var viewModel: HomeViewModel?
 
-    init(navigationController: UINavigationController, viewModel: HomeViewModel? = nil) {
+    init(navigationController: UINavigationController?, viewModel: HomeViewModel? = nil) {
         self.navigationController = navigationController
         self.viewModel = viewModel
     }
@@ -14,7 +14,7 @@ class HomeCoordinator: Coordinator {
            
         let vc = HomeViewController(viewModel: homeViewModel)
         vc.coordinator = self
-        navigationController.setViewControllers([vc], animated: false)
+        navigationController?.setViewControllers([vc], animated: false)
     }
     
     func navigateToDate(controller: HomeViewController, date: Date) {

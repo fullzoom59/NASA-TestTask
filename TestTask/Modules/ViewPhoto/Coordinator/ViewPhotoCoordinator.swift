@@ -1,10 +1,10 @@
 import UIKit
 
 class ViewPhotoCoordinator: Coordinator {
-    var navigationController: UINavigationController
+    weak var navigationController: UINavigationController?
     var image: UIImage?
     
-    init(navigationController: UINavigationController, image: UIImage?) {
+    init(navigationController: UINavigationController?, image: UIImage?) {
         self.navigationController = navigationController
         self.image = image
     }
@@ -14,6 +14,6 @@ class ViewPhotoCoordinator: Coordinator {
         vc.coordinator = self
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
-        navigationController.present(vc, animated: false)
+        navigationController?.present(vc, animated: false)
     }
 }

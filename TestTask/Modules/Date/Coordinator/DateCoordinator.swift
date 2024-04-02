@@ -1,11 +1,11 @@
 import UIKit
 
 class DateCoordinator: Coordinator {
-    var navigationController: UINavigationController
+    weak var navigationController: UINavigationController?
     weak var homeViewController: HomeViewController?
     var date: Date
     
-    init(navigationController: UINavigationController, homeViewController: HomeViewController, date: Date) {
+    init(navigationController: UINavigationController?, homeViewController: HomeViewController, date: Date) {
         self.navigationController = navigationController
         self.homeViewController = homeViewController
         self.date = date
@@ -17,6 +17,6 @@ class DateCoordinator: Coordinator {
         vc.delegate = homeViewController
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
-        navigationController.present(vc, animated: true)
+        navigationController?.present(vc, animated: true)
     }
 }
